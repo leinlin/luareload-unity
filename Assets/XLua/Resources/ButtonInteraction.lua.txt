@@ -1,0 +1,25 @@
+ui = {}
+
+local function button2Click()
+	-- 你可以随便修改添加这个函数的局部变量以及逻辑
+	print("button2 click")
+end
+
+function ui:button1Click()
+	-- 你可以随便修改添加这个函数的局部变量以及逻辑
+	print("button1 click")
+	self.a = "111111"
+	print(self.a)
+end
+
+function ui:start()
+	self.a = "xxxxx"
+	print("lua start...")
+	self.button1:GetComponent("Button").onClick:AddListener(function()
+		-- 你可以随便修改添加这个函数的局部变量以及逻辑，
+		print("callback click")
+		self:button1Click()
+	end)
+
+	self.button2:GetComponent("Button").onClick:AddListener(button2Click)
+end
